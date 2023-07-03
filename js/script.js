@@ -94,13 +94,14 @@ class Calculator {
 
     //change math operation
     changeOperation(operation) {
-        const mathOperations = ["*", "-", "+", "/"];
+
+        const mathOperations = ["*", "/", "+", "-"];
 
         if (!mathOperations.includes(operation)) {
             return;
         }
 
-        this.previousOperationText.innerText = this. previousOperationText.innerText.slice(0, -1) + operation ;
+        this.previousOperationText.innerText = this. previousOperationText.innerText.slice(0, -1) + operation;
     }
 
     //Delete a digit
@@ -112,11 +113,17 @@ class Calculator {
         this.currentOperationText.innerText = "";
     }
 
+    //clear all operations 
+    processClearOperator() {
+        this.currentOperationText.innerText = "";
+        this.previousOperationText.innerText = "";
+    }
+
     //process an operation
     processEqualOperator() {
-        let operation = this.previousOperationText.innerText.split(" ")[1];
+        const operation = this.previousOperationText.innerText.split(" ")[1];
         
-        this.processDelOperator(operation);
+        this.processOperation(operation);
     }
 }    
 
